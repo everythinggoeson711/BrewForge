@@ -1,0 +1,37 @@
+:root {
+  --ink: #100b06;
+  --ink-raised: #17110a;
+  --cream: #f5e4c7;
+  --cream-dim: rgba(245, 228, 199, 0.6);
+  --cream-faint: rgba(245, 228, 199, 0.12);
+  --line: rgba(245, 228, 199, 0.16);
+  --accent: #f5e4c7;
+
+  --font-display: 'Anton', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+
+  font: 15px/1.5 var(--font-body);
+  color: var(--cream);
+  background: var(--ink);
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+::selection {
+  background: var(--cream);
+  color: var(--ink);
+}
