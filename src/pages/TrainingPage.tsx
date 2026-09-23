@@ -15,6 +15,7 @@ export const TrainingPage = () => {
           const doneCount = course.lessons.filter((lesson) => completedLessons[lesson.id]).length;
           const progress = Math.round((doneCount / course.lessons.length) * 100);
           const firstLesson = course.lessons[0];
+          const quizLesson = course.lessons.find((lesson) => lesson.isQuiz);
 
           return (
             <div className="training-card" key={course.id}>
@@ -30,9 +31,16 @@ export const TrainingPage = () => {
               </div>
               <span className="training-card__progress-label">{progress}% complete</span>
 
-              <Link to={`/app/training/${course.id}/${firstLesson.id}`} className="btn btn--outline">
-                {progress > 0 ? 'Continue Training' : 'Start Training'}
-              </Link>
+              <div className="training-card__actions">
+                <Link to={`/app/training/${course.id}/${firstLesson.id}`} className="btn btn--outline">
+                  {progress > 0 ? 'Continue Training' : 'Start Training'}
+                </Link>
+                {quizLesson && (
+                  <Link to={`/app/training/${course.id}/${quizLesson.id}`} className="btn btn--outline">
+                    Take Quiz
+                  </Link>
+                )}
+              </div>
             </div>
           );
         })}

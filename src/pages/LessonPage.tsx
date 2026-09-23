@@ -76,7 +76,10 @@ export const LessonPage = () => {
                   to={`/app/training/${course.id}/${item.id}`}
                   className={`lesson__syllabus-item${active ? ' lesson__syllabus-item--active' : ''}${done ? ' lesson__syllabus-item--done' : ''}`}
                 >
-                  <span>{item.title}</span>
+                  <span>
+                    {item.isQuiz && <span className="lesson__syllabus-quiz-tag">QUIZ</span>}
+                    {item.title}
+                  </span>
                   <span className="lesson__syllabus-duration">{item.duration}</span>
                 </Link>
               );

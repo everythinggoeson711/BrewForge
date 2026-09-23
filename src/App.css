@@ -399,6 +399,12 @@
   margin-bottom: 20px;
 }
 
+.training-card__actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 /* ---------- Lesson workspace ---------- */
 .lesson__top {
   display: flex;
@@ -491,6 +497,18 @@
 .lesson__syllabus-duration {
   color: var(--cream-dim);
   white-space: nowrap;
+}
+
+.lesson__syllabus-quiz-tag {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 9px;
+  letter-spacing: 0.6px;
+  color: var(--ink);
+  background: var(--cream);
+  padding: 2px 6px;
+  margin-right: 8px;
+  vertical-align: middle;
 }
 
 .lesson__main {
