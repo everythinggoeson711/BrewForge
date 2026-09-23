@@ -14,7 +14,14 @@
   justify-content: space-between;
   padding: 24px 48px;
   background: var(--ink);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid transparent;
+  transition: padding 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.marketing-nav.condensed {
+  padding: 14px 48px;
+  border-bottom-color: var(--line);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
 }
 
 .marketing-nav__brand {
@@ -70,7 +77,21 @@
   text-decoration: none;
   cursor: pointer;
   border: 1px solid var(--cream);
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .btn--solid {
@@ -189,48 +210,258 @@
   color: var(--cream-dim);
 }
 
-/* ---------- Pillars ---------- */
-.pillars {
-  padding: 0 48px 100px;
+/* ---------- Product Showcase (carousel + floating orb) ---------- */
+.showcase {
+  position: relative;
+  padding: 40px 48px 80px;
+  overflow: hidden;
 }
 
-.pillars__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
+.showcase__bleed {
+  text-align: center;
 }
 
-.pillar-card {
-  background: var(--ink);
-  padding: 32px 28px;
-  transition: background 0.25s ease;
-}
-
-.pillar-card:hover {
-  background: var(--ink-raised);
-}
-
-.pillar-card__index {
+.showcase__bleed-heading {
   font-family: var(--font-display);
-  font-size: 14px;
+  font-size: clamp(48px, 8vw, 104px);
+  line-height: 0.9;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--ink-raised);
+  -webkit-text-stroke: 1px var(--line);
+  margin: 0;
+}
+
+.showcase__stage {
+  position: relative;
+  height: clamp(280px, 40vw, 420px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.showcase__orb {
+  width: clamp(180px, 22vw, 260px);
+  height: clamp(180px, 22vw, 260px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--ink-raised), var(--ink) 70%);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.showcase__orb-icon {
+  width: 40%;
+  height: 40%;
+  color: var(--cream);
+}
+
+.showcase__float {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.showcase__float-icon {
+  width: 60%;
+  height: 60%;
   color: var(--cream-dim);
 }
 
-.pillar-card__title {
-  font-family: var(--font-display);
-  font-size: 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-  color: var(--cream);
-  margin: 16px 0 12px;
+.showcase__bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+  border-top: 1px dashed var(--line);
+  margin-top: 32px;
 }
 
-.pillar-card__copy {
-  font-size: 14px;
+.showcase__bar-label {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  white-space: nowrap;
+}
+
+.showcase__bar-label--right {
+  color: var(--cream);
+}
+
+.showcase__bar-line {
+  flex: 1;
+  border-top: 1px dashed var(--line);
+}
+
+.showcase__controls {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 32px;
+  padding: 40px 0 24px;
+}
+
+.showcase__arrow {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--cream);
+  font-size: 18px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.showcase__arrow:hover {
+  border-color: var(--cream);
+  transform: scale(1.06);
+}
+
+.showcase__copy {
+  text-align: center;
+}
+
+.showcase__tagline {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 34px);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--cream);
+  margin: 0 0 12px;
+}
+
+.showcase__description {
+  font-size: 15px;
   line-height: 1.6;
   color: var(--cream-dim);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.showcase__dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.showcase__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--cream-dim);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.showcase__dot--active {
+  background: var(--cream);
+  border-color: var(--cream);
+}
+
+/* ---------- Claims stack (pinned scroll reveal) ---------- */
+.claims {
+  position: relative;
+}
+
+.claims__stage {
+  position: relative;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 24px;
+}
+
+.claims__scatter {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.claims__scatter-icon {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  color: var(--cream-dim);
+  opacity: 0.35;
+  filter: blur(0.3px);
+}
+
+.claims__heading {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 44px);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--cream);
+  margin: 0 0 48px;
+  text-align: center;
+}
+
+.claims__deck {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  height: 260px;
+}
+
+.claim-card {
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  border: 1px solid var(--line);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  will-change: transform, opacity;
+}
+
+.claim-card__bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.6px;
+}
+
+.claim-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.claim-card__icon {
+  width: 44px;
+  height: 44px;
+  color: var(--cream);
+}
+
+.claim-card__copy {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--cream-dim);
+  max-width: 380px;
 }
 
 /* ---------- Stats ---------- */
@@ -395,7 +626,7 @@
   }
 
   .about,
-  .pillars,
+  .showcase,
   .stats,
   .cta {
     padding-left: 24px;
@@ -404,5 +635,15 @@
 
   .cta__title {
     font-size: 36px;
+  }
+
+  .showcase__controls {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .showcase__float {
+    display: none;
   }
 }

@@ -9,6 +9,9 @@ import { LoginPage } from './pages/marketing/LoginPage';
 import { DashboardPage } from './pages/DashboardPage';
 import { RecipesPage } from './pages/RecipesPage';
 import { BranchesPage } from './pages/BranchesPage';
+import { TrainingPage } from './pages/TrainingPage';
+import { LessonPage } from './pages/LessonPage';
+import { CertificationsPage } from './pages/CertificationsPage';
 
 export const App = () => {
   return (
@@ -28,6 +31,9 @@ export const App = () => {
         <Route index element={<DashboardPage />} />
         <Route path="recipes" element={<RecipesPage />} />
         <Route path="branches" element={<BranchesPage />} />
+        <Route path="training" element={<TrainingPage />} />
+        <Route path="training/:courseId/:lessonId" element={<LessonPage />} />
+        <Route path="certifications" element={<CertificationsPage />} />
       </Route>
     </Routes>
   );

@@ -1,11 +1,13 @@
 import { Link, NavLink } from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks';
+import { useScrollCondense } from '../../hooks/useScrollCondense';
 
 export const MarketingNav = () => {
   const currentUser = useAppSelector((state) => state.auth.currentUser);
+  const navRef = useScrollCondense<HTMLElement>();
 
   return (
-    <header className="marketing-nav">
+    <header className="marketing-nav" ref={navRef}>
       <Link to="/" className="marketing-nav__brand">
         BREWFORGE
       </Link>

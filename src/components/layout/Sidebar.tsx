@@ -5,6 +5,8 @@ const navItems = [
   { to: '/app', label: 'Dashboard', index: '01' },
   { to: '/app/recipes', label: 'Recipes', index: '02' },
   { to: '/app/branches', label: 'Branches', index: '03' },
+  { to: '/app/training', label: 'Training', index: '04' },
+  { to: '/app/certifications', label: 'Certifications', index: '05' },
 ];
 
 export const Sidebar = () => {

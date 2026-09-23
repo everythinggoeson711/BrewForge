@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# SSH keys and credentials
+*.pem
+*.key
+
+# Reference-only project, not part of this repo
+ELearningPlatform/
+
+# Local-only files, not part of the pushed app
+slide.html
+deploy.sh
